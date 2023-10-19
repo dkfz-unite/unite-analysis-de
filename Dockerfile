@@ -18,7 +18,7 @@ ENV ASPNETCORE_hostBuilder:reloadConfigOnChange=false
 ENV UNITE_COMMAND="Rscript"
 ENV UNITE_COMMAND_ARGUMENTS="run.R {data}/{proc}_data.tsv {data}/{proc}_metadata.tsv {data}/{proc}_results.tsv"
 ENV UNITE_SOURCE_PATH="/src"
-ENV UNITE_DATA_PATH="/mnt/analysis"
+ENV UNITE_DATA_PATH="/mnt/data"
 ENV UNITE_LIMIT="5"
 EXPOSE 80
 CMD ["/app/Unite.Commands.Web", "--urls", "http://0.0.0.0:80"]
