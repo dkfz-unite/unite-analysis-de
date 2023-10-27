@@ -9,7 +9,7 @@ To configure the application, change environment variables as required in [comma
 - `UNITE_COMMAND_ARGUMENS` - command arguments (`run.R {data}/{proc}_data.tsv {data}/{proc}_metadata.tsv {data}/{proc}_results.tsv`).
 - `UNITE_SOURCE_PATH` - location of the source code in docker container (`/src`).
 - `UNITE_DATA_PATH` - location of the data in docker container (`/mnt/analysis`).
-- `UNITE_LIMIT` - maximum number of concurrent jobs (`5`).
+- `UNITE_LIMIT` - maximum number of concurrent jobs (`1` - process is heavy and uses a lot of CPU).
 
 ## Installation
 
