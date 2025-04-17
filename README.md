@@ -1,4 +1,4 @@
-# DESeq2 analysis service
+# Differential Expression Analysis (DESeq2) Service
 
 ## General
 DESeq2 analysis application wrapped with web API.
