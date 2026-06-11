@@ -13,7 +13,7 @@ count_raw = count_raw[,-1]
 #### Metadata
 metadata = read.table(file = args[2], header = T, sep = "\t", check.names = F)
 rownames(metadata) = metadata[,1]
-metadata[,2] = as.factor(metadata[,2])
+metadata[,2] = relevel(as.factor(metadata[,2]), ref = tail(unique(as.character(metadata[,2])), 1))
 
 #### Count matrix re-arrangement
 count_raw = count_raw[,rownames(metadata)]
