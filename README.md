@@ -54,3 +54,19 @@ unite.analysis.deg:latest
   - All entries of `{proc}` will be replaced with the process key.
 - Analysis will try to find the files `{proc}_data.tsv` and `{proc}_metadata.tsv` in the data location and use them as input.
 - Analysis will save the results to the file `{proc}_results.tsv` in the data location.
+
+## Input files
+- `metadata.tsv` contains two columns, the first should contain a donor identifier and the second should contain a condition label. It is expected that exactly two conditions are present and listed in contiguous blocks. The second-occurring condition will be made the reference condition, such that the fold changes are in te direction `other_condition` -> `reference_condition`
+```tsv
+sample_id	condition
+Donors_150	other
+Donors_206	other
+Donors_210	ref
+Donors_218	ref
+```
+- `data.tsv` contains the raw counts, the first columns will contain the gene identifier, the others will contain counts, with each coilumn correspondingto a donor
+```tsv
+gene_id	Donors_150	Donors_206	Donors_210	Donors_218
+ENSG00000227232	956	1482	602	2623
+ENSG00000237683	1485	109	797	159
+```
