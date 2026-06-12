@@ -33,5 +33,5 @@ count_norm = counts(dds, normalized=T)
 res_tab = as.data.frame(na.omit(res))
 ref_cat  = levels(metadata[,2])[1]
 test_cat = levels(metadata[,2])[2]
-res_tab$contrast = paste0("log(", test_cat, ") - log(", ref_cat, ")")
+res_tab$contrast = paste0(test_cat, " - ", ref_cat)
 write.table(x = data.frame("ID" = rownames(res_tab), res_tab), file = args[3], sep = "\t", quote = F, row.names = F)

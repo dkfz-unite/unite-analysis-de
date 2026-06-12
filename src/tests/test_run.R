@@ -102,7 +102,7 @@ test_that("last-occurring condition in metadata is the DESeq2 reference level", 
   )
   expect_match(
     res["gene1", "contrast"],
-    "^log\\(control\\) - log\\(treated\\)",
-    info = "contrast should be 'log(control) - log(treated)' when treated is the reference"
+    "^control - treated",
+    info = "contrast should be 'control - treated' when treated is the reference"
   )
 })
