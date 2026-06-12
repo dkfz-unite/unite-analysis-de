@@ -13,7 +13,7 @@ count_raw = count_raw[,-1]
 #### Metadata
 metadata = read.table(file = args[2], header = T, sep = "\t", check.names = F)
 rownames(metadata) = metadata[,1]
-metadata[,2] = as.factor(metadata[,2])
+metadata[,2] = relevel(as.factor(metadata[,2]), ref = tail(unique(as.character(metadata[,2])), 1))
 
 #### Count matrix re-arrangement
 count_raw = count_raw[,rownames(metadata)]
@@ -31,4 +31,7 @@ res = results(dds)
 count_norm = counts(dds, normalized=T)
 
 res_tab = as.data.frame(na.omit(res))
+ref_cat  = levels(metadata[,2])[1]
+test_cat = levels(metadata[,2])[2]
+res_tab$contrast = paste0(test_cat, " - ", ref_cat)
 write.table(x = data.frame("ID" = rownames(res_tab), res_tab), file = args[3], sep = "\t", quote = F, row.names = F)
