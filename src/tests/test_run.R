@@ -93,4 +93,16 @@ test_that("last-occurring condition in metadata is the DESeq2 reference level", 
     res["gene2", "log2FoldChange"], 0,
     label = "gene2 LFC < 0: treated >> control; negative only when treated is the reference"
   )
+
+  # The contrast column should name the non-reference condition against the
+  # reference, confirming which comparison was made.
+  expect_true(
+    "contrast" %in% colnames(res),
+    info = "output must contain a 'contrast' column"
+  )
+  expect_match(
+    res["gene1", "contrast"],
+    "^log\\(control\\) - log\\(treated\\)",
+    info = "contrast should be 'log(control) - log(treated)' when treated is the reference"
+  )
 })
